@@ -1,3 +1,3 @@
-Router.route('/', function () {
-  this.render('welcome', {data: {title: 'COL DMA'}});
+Router.map(function() {
+  this.route('welcome', {path: '/'});
 });
