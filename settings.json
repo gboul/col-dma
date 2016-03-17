@@ -1,0 +1,14 @@
+{
+  "electron": {
+    "name": "Image Tagging",
+    "icon": "public/col-dma.ico",
+    "version": "0.1.2",
+    "description": "Image Tagging",
+    "height": 768,
+    "width": 1024,
+    "frame": true,
+    "title-bar-style": "default",
+    "title": "Image Tagging",
+    "resizable": true
+  }
+}

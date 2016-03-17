@@ -43,7 +43,7 @@ var handleStartupEvent = function() {
       // Always quit when done
       installShortcut(function(){
         app.quit();
-      })
+      });
 
       return true;
     case '--squirrel-uninstall':
@@ -70,7 +70,7 @@ app.on("window-all-closed", function(){
   if (process.platform !== "darwin"){
     app.quit();
   }
-})
+});
 
 if (handleStartupEvent()) {
   return;
@@ -82,9 +82,10 @@ var path = require("path");
 var fs = require("fs");
 var createDefaultMenu = require('./menu.js');
 var proxyWindowEvents = require('./proxyWindowEvents');
+var NativeImage = require('electron').NativeImage;
 
 require('electron-debug')({
-    showDevTools: false
+    showDevTools: true
 });
 
 var electronSettings = JSON.parse(fs.readFileSync(
@@ -125,6 +126,14 @@ var windowOptions = {
 
 if (electronSettings.resizable === false){
   windowOptions.resizable = false;
+}
+
+if (electronSettings['title']) {
+  windowOptions['title'] = electronSettings['title'];
+}
+
+if (electronSettings['icon']) {
+  windowOptions['icon'] = electronSettings['icon'];
 }
 
 if (electronSettings['title-bar-style']) {

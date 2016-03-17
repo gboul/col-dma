@@ -5,9 +5,9 @@
     <key>BuildMachineOSBuild</key>
     <string>14B25</string>
     <key>CFBundleIdentifier</key>
-    <string>com.electron.electron.helper</string>
+    <string>com.electron.image_tagging.helper</string>
     <key>CFBundleName</key>
-    <string>Electron</string>
+    <string>Image Tagging</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>DTSDKBuild</key>

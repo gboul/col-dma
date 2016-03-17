@@ -21,6 +21,18 @@ var createDefaultMenu = function(app, getMainWindow, checkForUpdates) {
               type: 'separator'
             },
             {
+              label: 'Preferences',
+              click: function() {
+                var mainWindow = getMainWindow();
+                // mainWindow.loadURL('file://' + __dirname + '/config');
+                mainWindow.webContents.executeJavaScript('Router.go("/config")');
+                // mainWindow.Router.go('/config');
+              }
+            },
+            {
+              type: 'separator'
+            },
+            {
               label: 'Services',
               role: 'services',
               submenu: []
