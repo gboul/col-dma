@@ -1,3 +1,18 @@
 <template name="config">
-        <h1>Config</h1>
+        <h1>Select folders to scan for image files</h1>
+        <fieldset>
+          <ul id="folderList">
+            {{#each imageFolders}}
+              {{> imgFolder}}
+            {{/each}}
+          </ul>
+          <button id="addToScan" class="btn btn-success">Add folders</button>
+        </fieldset>
+        <button id="returnToHome" class="btn btn-success" >Close</button>
+</template>
+
+<template name="imgFolder">
+  <li class="imgFolder {{selected}}">
+    <span class="path">{{imgFolderPath}}</span>
+  </li>
 </template>

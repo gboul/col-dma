@@ -1,4 +1,7 @@
 .meteor/local
 .meteor/meteorite
-
-.meteor-electron/darwin-x64/releases/electron-v0.36.2-darwin-x64.zip
+.DS_Store
+.meteor-electron/darwin-x64/releases/
+.meteor-electron/darwin-x64/final/
+.meteor-electron/darwin-x64/builds/
+.meteor-electron/

@@ -1,5 +1,6 @@
 {
   "electron": {
+    "appSrcDir":"private/app",
     "name": "Image Tagging",
     "icon": "public/col-dma.ico",
     "version": "0.1.2",
