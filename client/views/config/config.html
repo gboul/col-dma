@@ -1,18 +1,29 @@
 <template name="config">
-        <h1>Select folders to scan for image files</h1>
-        <fieldset>
-          <ul id="folderList">
-            {{#each imageFolders}}
-              {{> imgFolder}}
-            {{/each}}
-          </ul>
-          <button id="addToScan" class="btn btn-success">Add folders</button>
-        </fieldset>
-        <button id="returnToHome" class="btn btn-success" >Close</button>
+  <h1>Select folders to scan for image files</h1>
+  <fieldset>
+    <ol id="folderList">
+      {{#each imageFolders}}
+        {{> imgFolder}}
+      {{/each}}
+    </ol>
+  </fieldset>
+  <button id="addToScan" type="button" class="btn btn-primary">Add folders</button>
+  <button id="returnToHome" type="button" class="btn btn-default">Close</button>
 </template>
 
 <template name="imgFolder">
-  <li class="imgFolder {{selected}}">
+<li class="imgFolder {{selected}}">
+  <div class="">
     <span class="path">{{imgFolderPath}}</span>
-  </li>
+    <span class="foundFiles">({{imgFolderCount}} files)</span>
+  </div>
+  <div class="btn-group pull-right" role="group" aria-label="...">
+    <button type="button" class="btn bnt-default">
+      <span class="glyphicon glyphicon-repeat"></span>
+    </button>
+    <button type="button" class="btn bnt-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+  </div>
+</li>
 </template>

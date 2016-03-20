@@ -12,7 +12,33 @@ var _ = require('underscore');
 var ipc = require('electron').ipcRenderer;
 var remote = require('electron').remote;
 var shell = require('electron').shell;
+var fs = require('fs');
 
+var walk = function(dir, patt, done) {
+  var results = [];
+  fs.readdir(dir, function(err, list) {
+    if (err) return done(err);
+    var i = 0;
+    (function next() {
+      var file = list[i++];
+      if (!file) return done(null, results);
+      file = dir + '/' + file;
+      fs.stat(file, function(err, stat) {
+        if (stat && stat.isDirectory()) {
+          walk(file, patt, function(err, res) {
+            results = results.concat(res);
+            next();
+          });
+        } else {
+          if((patt.exec(file))!==null) {
+            results.push(file);
+          }
+          next();
+        }
+      });
+    })();
+  });
+};
 /**
  // * Defines methods with which to extend the `Electron` module defined in `client.js`.
  * This must be a global in order to escape the preload script and be available to `client.js`.
@@ -82,10 +108,11 @@ ElectronImplementation = {
   },
 
   getDialog: function() {
-    return dialog = remote.dialog;
+    return remote.dialog;
   },
-  getFiles: function() {
-    return remote.fs;
+  getFiles: function(path,callback) {
+    var patt =/\.(gif|jp?g|png|tiff|psd|ico?|eps|pdf)$/i;
+    walk(path, patt ,callback);
   },
   _eventListeners: {}
 };
